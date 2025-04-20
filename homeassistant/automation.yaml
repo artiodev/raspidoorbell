@@ -1,0 +1,16 @@
+- alias: Open Gate and Auto Close
+  mode: single
+  trigger:
+    - platform: mqtt
+      topic: home/button/open_gate
+      payload: 'ON'
+  action:
+    - service: mqtt.publish
+      data:
+        topic: home/output/doorbell/set
+        payload: 'ON'
+    - delay: '00:00:01'
+    - service: mqtt.publish
+      data:
+        topic: home/output/doorbell/set
+        payload: 'OFF'

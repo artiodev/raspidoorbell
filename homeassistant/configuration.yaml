@@ -1,0 +1,20 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+mqtt:
+  - button:
+      unique_id: cancello
+      name: "Open Gate"
+      command_topic: "home/button/open_gate"
+      payload_press: "ON"
+      qos: 0
+      retain: false
+      entity_category: "config"
+      device_class: "restart"

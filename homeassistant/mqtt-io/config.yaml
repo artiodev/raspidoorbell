@@ -1,0 +1,15 @@
+mqtt:
+  host: 172.30.33.0
+  user: raspberry
+  password: raspberry
+  topic_prefix: home
+
+# GPIO
+gpio_modules:
+  - name: rpi
+    module: raspberrypi
+
+digital_outputs:
+  - name: doorbell
+    module: rpi
+    pin: 19
