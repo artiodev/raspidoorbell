@@ -38,3 +38,13 @@ Installed following addons:
 - HACS (https://www.hacs.xyz/docs/use/download/download/)
 
 Tip: Use the HomeAssistant OS 11.2 or 11.5 cause recent version have some issues with MQTT-IO addons. 
+
+## HomeAssistant - Installation ## 
+
+Follow the instructions here https://www.home-assistant.io/installation/raspberrypi 
+
+## HomeAssistant - Configurations ## 
+
+Set the MQTT-IO config.yaml as defined into homeassistant/mqtt-io/config.yaml 
+
+Set the configurations file as documents here

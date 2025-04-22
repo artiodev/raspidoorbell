@@ -1,0 +1,55 @@
+---  
+
+- name: "Checkout Repository"
+  shell: git clone https://github.com/motom001/DoorPi.git -b master /tmp/DoorPi
+  ignore_errors: yes
+
+- name: "Install pip"
+  shell: "curl https://bootstrap.pypa.io/pip/3.5/get-pip.py -o get-pip.py"
+  args:
+    chdir: /tmp
+  ignore_errors: yes
+
+- name: "Install python watchdog"
+  shell: "sudo apt-get install python-watchdog"
+
+- name: "Install pip"
+  shell: "python get-pip.py"
+  args:
+    chdir: /tmp
+
+- name: "Update pip install setuptools"
+  shell: "cd /tmp/DoorPi; sudo python -m pip install --upgrade pip; sudo python -m pip install --upgrade setuptools"
+
+- name: "Install python deamon"
+  shell: "pip install python-daemon==2.2.4"
+
+- name: Install pip version 9.0.3
+  pip:
+    name: pip==9.0.3
+
+- name: "Install Doorpi"
+  shell: "cd /tmp/DoorPi; pip install . "
+
+- name: "Copy configurations file"
+  template: src='doorpi.ini.j2' dest='{{doorpi.path}}/conf/doorpi.ini' owner='root' group='root' mode='0644'
+
+- name: Create scripts directory
+  file:
+    path: "{{doorpi.path}}/scripts"
+    state: directory
+
+- name: "Copy mqtt sh"
+  template: src='mqtt.sh.j2' dest='{{doorpi.path}}/scripts/mqtt.sh' owner='root' group='root' mode='0644'
+
+- name: "Copy mqtt py"
+  template: src='mqtt.py.j2' dest='{{doorpi.path}}/scripts/mqtt.py' owner='root' group='root' mode='0644'
+
+- name: Install linphone 
+  pip: 
+    name: linphone4raspberry
+
+- name: "Start deamon"
+  shell: "systemctl start doorpi"
+
+    

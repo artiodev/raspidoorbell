@@ -1,0 +1,15 @@
+log:
+  hosts:
+    doorpi: 
+      ansible_ssh_host: IP_ADDRESS
+      hostname: doorpi
+
+all:
+  vars:
+    ansible_ssh_private_key_file: ~/.ssh/id_rsa
+    ansible_user: root
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+    doorpi:
+      ip: IP_ADDRESS
+      port: 8081
+      path: "/usr/local/etc/DoorPi"

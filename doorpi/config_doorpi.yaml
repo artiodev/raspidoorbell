@@ -1,0 +1,6 @@
+--- 
+- hosts: doorpi
+  become: yes
+  roles:
+    - doorpi_install
+

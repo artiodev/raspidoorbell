@@ -1,0 +1,73 @@
+[AREA_installer]
+.* =
+
+[DoorPi]
+base_path = /usr/local/etc/DoorPi
+eventlog = !BASEPATH!/conf/eventlog.db
+is_alive_led =
+last_snapshot =
+snapshot_path =
+
+[DoorPiWeb]
+indexfile = index.html
+ip = {{ doorpi.ip }}
+loginfile = login.html
+online_fallback = http://motom001.github.io/DoorPiWeb
+port = {{ doorpi.port  }}
+public = AREA_public
+www = !BASEPATH!/../DoorPiWeb
+
+[EVENT_OnStartup]
+10 = sleep:1
+
+[SIP-Phone]
+firewallpolicy = PolicyNoFirewall
+audio_codecs = G722,PCMA
+call_timeout = 30
+capture_device = ALSA: USB Audio Device
+playback_device = ALSA: USB Audio Device
+ua.max_calls = 2
+call_debounce = 40
+local_port = 5060
+max_call_time = 900
+sipphonetyp = linphone
+sipserver_server = sip.linphone.org
+sipserver_username = {{ sip.username }}
+sipserver_realm = sip.linphone.org
+sipserver_password = {{ sip.password }}
+video_codecs = VP8
+video_device = V4L2: /dev/video0
+video_display_enabled = False
+video_size = uxga
+
+[User]
+door = pi
+visitor = visitor
+
+[WritePermission]
+administrator = installer
+
+[keyboards]
+onboardpins = gpio
+
+[onboardpins_keyboard]
+bouncetime = 200
+mode = BOARD
+polarity = 0
+pressed_on_keydown = True
+pull_up_down = PUD_DOWN
+
+[onboardpins_InputPins]
+37 = call:gartioli
+
+[onboardpins_OutputPins]
+15 = led
+
+[DTMF]
+"2" = os_execute:/usr/local/etc/DoorPi/scripts/mqtt.sh
+
+[Group]
+administrator = door
+
+[AdminNumbers]
+* = active

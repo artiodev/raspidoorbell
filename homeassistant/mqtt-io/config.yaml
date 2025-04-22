@@ -1,5 +1,5 @@
 mqtt:
-  host: 172.30.33.0
+  host: 172.30.33.0 #Ip address of MQTT mosquito server
   user: raspberry
   password: raspberry
   topic_prefix: home
