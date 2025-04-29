@@ -1,0 +1,8 @@
+- name: "Copy automtion automation"
+  template: src='automation.yml.j2' dest='/automation.yml' owner='root' group='root' mode='0644'
+
+- name: "Copy mqtt-io config"
+  template: src='config.yml.j2' dest='/config.yml' owner='root' group='root' mode='0644'
+
+- name: "Copy configuration"
+  template: src='configuration.yml.j2' dest='/configuration.yml' owner='root' group='root' mode='0644'

@@ -58,7 +58,7 @@ pressed_on_keydown = True
 pull_up_down = PUD_DOWN
 
 [onboardpins_InputPins]
-37 = call:gartioli
+{{ doorpi.gpio_input }} = call:{{ sip.username }}
 
 [onboardpins_OutputPins]
 15 = led

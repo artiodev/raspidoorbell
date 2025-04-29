@@ -3,6 +3,9 @@ log:
     doorpi: 
       ansible_ssh_host: IP_ADDRESS
       hostname: doorpi
+    homeassistant: 
+      ansible_ssh_host: IP_ADDRESS
+      hostname: homeassistant
 
 all:
   vars:
@@ -13,3 +16,7 @@ all:
       ip: IP_ADDRESS
       port: 8081
       path: "/usr/local/etc/DoorPi"
+      gpio_input: 37
+    sip:
+      username: SIP_USERNAME
+      password: SIP_PASSWORD #NB: Encrypt using Ansible Vault
