@@ -17,6 +17,10 @@ all:
       port: 8081
       path: "/usr/local/etc/DoorPi"
       gpio_input: 37
+    homeassistant:
+      container_name: "homeassistant"
+      username: HOME_USERNAME
+      password: HOME_PASSWORD
     sip:
       username: SIP_USERNAME
       password: SIP_PASSWORD #NB: Encrypt using Ansible Vault

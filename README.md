@@ -41,18 +41,22 @@ Tip: Use the HomeAssistant OS 11.2 or 11.5 cause recent version have some issues
 
 ## HomeAssistant - Install OS ## 
 
-Follow the instructions here https://www.home-assistant.io/installation/raspberrypi 
+- Follow the instructions here https://www.home-assistant.io/installation/raspberrypi 
 
 ## HomeAssistant - Ansible Configurations ## 
 
-
-## HomeAssistant - Playbook ## 
-
+- Set the HomeAssistant IP_ADDRESS on the inventoy.yml file
+- Set the HomeAssistant USERNAME and PASSWORD 
 
 ## Doorpi - Install OS ## 
 
+- Install RaspiOS https://www.raspberrypi.com/software/
 
 ## Doorpi - Ansible Configurations ## 
 
+- Set the Doorpi IP_ADDRESS on the inventoy.yml file
+- Set the SIP (Linphone) USERNAME and PASSWORD 
 
-## Doorpi - Playbook ## 
+## Playbook ## 
+
+- Run ansible-playbook -i inventory.yml playbook/main.yaml

@@ -1,8 +1,18 @@
 - name: "Copy automtion automation"
   template: src='automation.yml.j2' dest='/automation.yml' owner='root' group='root' mode='0644'
 
+- name: Get container IP address
+  command: >
+    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' {{ homeassistant.container_name }}
+  register: container_ip
+  changed_when: false
+  failed_when: container_ip.rc != 0
+
 - name: "Copy mqtt-io config"
   template: src='config.yml.j2' dest='/config.yml' owner='root' group='root' mode='0644'
 
 - name: "Copy configuration"
   template: src='configuration.yml.j2' dest='/configuration.yml' owner='root' group='root' mode='0644'
+
+- name: "Restart Homeassistant"
+  shell: "core restart"

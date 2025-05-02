@@ -1,0 +1,19 @@
+--- 
+
+- name: Pre-check host reachability
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ensure host is reachable
+      ansible.builtin.ping:
+
+- hosts: doorpi
+  become: yes
+  roles:
+    - doorpi_install
+
+- hosts: homeassistant
+  become: yes
+  roles:
+    - homeassistant_install
+

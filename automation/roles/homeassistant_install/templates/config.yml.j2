@@ -1,7 +1,7 @@
 mqtt:
-  host: 172.30.33.0 #Ip address of MQTT mosquito server
-  user: raspberry
-  password: raspberry
+  host: {{ container_ip }}
+  user: {{ homeassistant.username }}
+  password: {{ homeassistant.password }}
   topic_prefix: home
 
 # GPIO
